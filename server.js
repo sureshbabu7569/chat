@@ -19,9 +19,12 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/chat');
+mongoose.connect('mongodb+srv://thota:Abc123@cluster0.ndcdzaa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log("MongoDB database connection established successfully");
+});
 
-console.log("MongoDB database connection established successfully");
 
 // Define schemas and models
 const userSchema = new mongoose.Schema({
